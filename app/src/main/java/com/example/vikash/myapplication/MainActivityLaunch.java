@@ -11,43 +11,43 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivityLaunch extends AppCompatActivity implements View.OnClickListener {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    private Button mButton1;
-    private Button mButton2;
-    private Button mButton3;
-    private Button mButton4;
-    private Button mButton5;
+public class MainActivityLaunch extends AppCompatActivity {
 
+    @Bind(R.id.sportify_streamer_id)
+    Button mButton1;
+
+    @Bind(R.id.super_duo_id)
+    Button mButton2;
+
+    @Bind(R.id.build_it_bigger_id)
+    Button mButton3;
+
+    @Bind(R.id.xyz_reader_id)
+    Button mButton4;
+
+    @Bind(R.id.capstone_id)
+    Button mButton5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_launch);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_INDEFINITE)
                         .setAction("Action", null).show();
             }
         });
-        mButton1 = (Button) findViewById(R.id.sportify_streamer_id);
-        mButton2 = (Button) findViewById(R.id.super_duo_id);
-        mButton3 = (Button) findViewById(R.id.build_it_bigger_id);
-        mButton4 = (Button) findViewById(R.id.xyz_reader_id);
-        mButton5 = (Button) findViewById(R.id.capstone_id);
-        mButton1.setOnClickListener(this);
-        mButton2.setOnClickListener(this);
-        mButton3.setOnClickListener(this);
-        mButton4.setOnClickListener(this);
-        mButton5.setOnClickListener(this);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,8 +71,14 @@ public class MainActivityLaunch extends AppCompatActivity implements View.OnClic
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+    @OnClick({R.id.sportify_streamer_id, R.id.super_duo_id, R.id.build_it_bigger_id, R.id.xyz_reader_id, R.id.capstone_id})
     public void onClick(View v) {
         Toast.makeText(getApplicationContext(), String.format(getString(R.string.text_on_touch), ((Button) v).getText().toString()), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 }
