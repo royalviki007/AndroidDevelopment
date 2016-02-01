@@ -35,12 +35,11 @@ public class MainActivityLaunch extends AppCompatActivity implements View.OnClic
                         .setAction("Action", null).show();
             }
         });
-        mButton1 = (Button) findViewById(R.id.buttun1);
-
-        mButton2 = (Button) findViewById(R.id.button2);
-        mButton3 = (Button) findViewById(R.id.button3);
-        mButton4 = (Button) findViewById(R.id.button4);
-        mButton5 = (Button) findViewById(R.id.button5);
+        mButton1 = (Button) findViewById(R.id.sportify_streamer_id);
+        mButton2 = (Button) findViewById(R.id.super_duo_id);
+        mButton3 = (Button) findViewById(R.id.build_it_bigger_id);
+        mButton4 = (Button) findViewById(R.id.xyz_reader_id);
+        mButton5 = (Button) findViewById(R.id.capstone_id);
         mButton1.setOnClickListener(this);
         mButton2.setOnClickListener(this);
         mButton3.setOnClickListener(this);
@@ -74,6 +73,6 @@ public class MainActivityLaunch extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getApplicationContext(),String.format(getString(R.string.text_on_touch),((Button)v).getText().toString()), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), String.format(getString(R.string.text_on_touch), ((Button) v).getText().toString()), Toast.LENGTH_LONG).show();
     }
 }
